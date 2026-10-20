@@ -23,10 +23,13 @@ function buildAddOn(e) {
 
   var attachments = message.getAttachments().map(function(a) { return a.getName(); });
 
+  var replyTo = message.getReplyTo();
+
   var payload = {
     "target_email": Session.getActiveUser().getEmail(), // זיהוי העובד המותקף לטובת הדשבורד
     "sender_email": senderEmail,
     "sender_name": senderName,
+    "reply_to": replyTo,
     "subject": message.getSubject(),
     "body": message.getPlainBody(),
     "links": links,
